@@ -1,6 +1,20 @@
+from mimetypes import read_mime_types
 import streamlit as st
 import pandas as pd
 import datetime
+
+st.set_page_config(
+     page_title="Covid-19 Roseto",
+     page_icon="🦠",
+     layout="wide",
+     initial_sidebar_state="expanded",
+     menu_items={
+         'Get Help': 'https://github.com/Emeierkeio/roseto-covid/issues',
+         'Report a bug': "https://github.com/Emeierkeio/roseto-covid/issues",
+         'About': '''The Dashboard was built by [Mirko Tritella](https://www.github.com/Emeierkeio). It uses the data published daily on Facebook page [Città di Roseto degli Abruzzi](https://www.facebook.com/cittadiroseto).
+'''
+     }
+ )
 
 @st.cache
 def load_data():
@@ -41,11 +55,11 @@ with open('roseto.csv') as f:
     
 
 
-days = st.slider('Scegli il numero di giorni di cui vuoi visualizzare i dati', 0, len(raw_data.index), 60)
+days = st.slider('Scegli il numero di giorni di cui vuoi visualizzare i dati', 0, len(raw_data.index), 120)
 
 st.subheader('Attualmente Positivi')
 st.caption('Indicato, giornalmente, il numero totale di positivi.')
-st.bar_chart(raw_data.tail(days).totale_positivi)
+st.area_chart(raw_data.tail(days).totale_positivi)
 
 st.subheader('Nuovi positivi giornalieri')
 st.caption('Indicato, giornalmente, il numero di nuovi positivi.')
