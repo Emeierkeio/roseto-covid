@@ -62,7 +62,16 @@ with metrics:
 
 with graph:
     days = st.slider('Scegli il numero di giorni di cui vuoi visualizzare i dati', 0, len(raw_data.index), 120)
+
+    st.subheader('Attualmente Positivi')
+    st.caption('Indicato, giornalmente, il numero totale di positivi.')
     st.plotly_chart(plotter.plot_daily_cases(raw_data.tail(days), 'attualmente_positivi'), use_container_width=True)
+
+    st.subheader('Nuovi positivi giornalieri')
+    st.caption('Indicato, giornalmente, il numero di nuovi positivi.')
     st.plotly_chart(plotter.plot_daily_cases(raw_data.tail(days), 'nuovi_positivi'), use_container_width=True)
+
+    st.subheader('Numero di ricoverati')
+    st.caption('Indicato, giornalmente, il numero di persone attualmente ricoverate residenti nel comune di Roseto degli Abruzzi.')
     st.plotly_chart(plotter.plot_daily_cases(raw_data.tail(days), 'ricoverati'), use_container_width=True)
 

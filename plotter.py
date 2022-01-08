@@ -10,7 +10,7 @@ def main():
 
 
 def plot_daily_cases(df, measure):
-    fig = px.area(df, x = 'data', y= measure, title='Attualmente Positivi')
+    fig = px.area(df, x = 'data', y= measure)
 
 
     fig.update_layout(
@@ -27,7 +27,6 @@ def plot_daily_cases(df, measure):
             t=0,
             b=0
         ),
-        plot_bgcolor='rgba(0,0,0,0)',
     )
     return fig
 
