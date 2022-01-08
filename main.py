@@ -67,5 +67,5 @@ st.bar_chart(raw_data.tail(days).nuovi_positivi)
 
 st.subheader('Numero di ricoverati')
 st.caption('Indicato, giornalmente, il numero di persone attualmente ricoverate residenti nel comune di Roseto degli Abruzzi.')
-st.bar_chart(raw_data.tail(days).ricoverati)
+st.area_chart(raw_data.tail(days).ricoverati)
 
