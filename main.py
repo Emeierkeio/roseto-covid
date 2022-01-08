@@ -1,3 +1,4 @@
+from datetime import datetime, timedelta
 from mimetypes import read_mime_types
 import streamlit as st
 import pandas as pd
@@ -38,39 +39,51 @@ metrics = st.container()
 graph = st.container()
 
 with header:
-    st.title('COVID-19 a Roseto degli Abruzzi (TE)')
-    st.subheader('Dati aggiornati al ' + str(raw_data.data.max())[:10])
-
+    col11, col12 = st.columns(2)
+    with col11:
+        st.title('Roseto degli Abruzzi (TE)')
+        st.write('Dati COVID-19 aggiornati al ' + str(raw_data.data.max())[:10])
+    with col12:
+        with open('roseto.csv') as f:
+            st.download_button('Download data', f)
 
 with metrics:
+    st.markdown('##')
+    st.markdown('##')
     col1, col2, col3 = st.columns(3)
     col1.metric("Attualmente Positivi", int(oggi.attualmente_positivi.values[0]), int(oggi.attualmente_positivi.values[0] - ieri.attualmente_positivi.values[0]), delta_color="inverse")
     col2.metric("Ricoverati", int(oggi.ricoverati.values[0]), int(oggi.ricoverati.values[0] - ieri.ricoverati.values[0]), delta_color="inverse")
     col3.metric("Fine Sorveglianza", int(oggi.fine_sorveglianza.values[0]))
 
 
-    col_1, col_2 = st.columns(2)
-    if col_1.checkbox('Mostra dati'):
-        st.dataframe(raw_data)
-        
-    with open('roseto.csv') as f:
-        col_2.download_button('Scarica dati', f)
-        
 
 
 
 
 with graph:
-    days = st.slider('Seleziona la quantità di giorni di cui vuoi visualizzare i dati', 0, len(raw_data.index), 120)
-
+    # Create a date picker in streamlit
+    st.markdown('##')
+    st.markdown('##')
+    #day = st.date_input('Selezione la data da cui far partire le visualizzazioni:', datetime(2021, 9, 11))
+    #st.write('Verranno mostrati i dati dal', day, 'a oggi')
+    #yesterday = datetime.today() - timedelta(days=1)
+    #yesterday = yesterday.date()
+    days = 90
+    #days = (yesterday - day).days + 1
+    #if days < 2:
+    #    st.error('Puoi selezionare solamente date antecedenti ad oggi')
+    #elif(days > len(raw_data)):
+    #    st.error('Non ci sono dati per la data selezionata')
+    #else:
+    #    st.markdown('##')
     st.subheader('Attualmente Positivi')
     st.caption('Ciascun giorno mostra il numero totale di positivi.')
     st.plotly_chart(plotter.plotlyAreaChart(raw_data.tail(days), 'attualmente_positivi'), use_container_width=True)
-
+    st.markdown('##')
     st.subheader('Nuovi positivi giornalieri')
     st.caption('Ciascun giorno mostra i nuovi casi segnalati dal giorno precedente.')
     st.plotly_chart(plotter.plotlyAreaChart(raw_data.tail(days), 'nuovi_positivi'), use_container_width=True)
-
+    st.markdown('##')
     st.subheader('Numero di ricoverati')
     st.caption('Ciascun giorno mostra il numero di persone ricoverate residenti nel comune di Roseto degli Abruzzi.')
     st.plotly_chart(plotter.plotlyAreaChart(raw_data.tail(days), 'ricoverati'), use_container_width=True)
