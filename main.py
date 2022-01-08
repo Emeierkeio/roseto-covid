@@ -89,10 +89,10 @@ with graph:
     st.plotly_chart(plotter.plotlyAreaChart(raw_data.tail(days)), use_container_width=True)
     st.markdown('##')
     st.subheader('Nuovi positivi giornalieri')
-    st.caption('Ciascun giorno mostra i nuovi casi segnalati dal giorno precedente e la relativa media rispetto alla settimana precedente.')
+    st.caption('Ciascun giorno mostra i nuovi casi segnalati dal giorno precedente e la relativa media mobile rispetto ai sette giorni precedenti.')
     st.plotly_chart(plotter.plotlyAreaChartwithMean(raw_data.tail(days), 'nuovi_positivi'), use_container_width=True)
     st.markdown('##')
     st.subheader('Numero di ricoverati')
-    st.caption('Ciascun giorno mostra il numero di persone ricoverate residenti nel comune di Roseto degli Abruzzi e la relativa media rispetto alla settimana precedente.')
+    st.caption('Ciascun giorno mostra il numero di persone ricoverate residenti nel comune di Roseto degli Abruzzi e la relativa media mobile rispetto ai sette giorni precedenti.')
     st.plotly_chart(plotter.plotlyAreaChartwithMean(raw_data.tail(days), 'ricoverati'), use_container_width=True)
 
