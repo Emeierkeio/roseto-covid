@@ -2,9 +2,9 @@ import plotly.express as px
 
 def plotlyAreaChart(df, measure):
     fig = px.area(df, x = 'data', y= measure)
-
-
+    
     fig.update_layout(
+        dragmode=False,
         legend=dict(
                 orientation="h",
                 yanchor="top",
@@ -12,6 +12,7 @@ def plotlyAreaChart(df, measure):
                 xanchor="center",
                 x=0.5
         ),
+
         margin=dict(
             l=0,
             r=0,
