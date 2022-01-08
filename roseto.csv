@@ -1,4 +1,4 @@
-data,lat,lon,totale_positivi,ricoverati,nuovi_positivi,fine_sorveglianza
+data,lat,lon,attualmente_positivi,ricoverati,nuovi_positivi,fine_sorveglianza
 2021-02-16,42.67962,14.01091,,0,,
 2021-02-17,42.67962,14.01091,,1,,
 2021-02-18,42.67962,14.01091,,1,,
