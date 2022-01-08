@@ -39,7 +39,7 @@ graph = st.container()
 
 with header:
     st.title('COVID-19 a Roseto degli Abruzzi (TE)')
-    st.subheader('Dati aggiornati al ' + str(raw_data.data[-1])[:10])
+    st.subheader('Dati aggiornati al ' + str(raw_data.tail(1).data)[:10])
 
 
 with metrics:
