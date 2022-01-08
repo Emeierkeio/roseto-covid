@@ -28,7 +28,7 @@ def load_data():
 raw_data = load_data()
 
 st.title('COVID-19 a Roseto degli Abruzzi (TE)')
-st.subheader('Dati aggiornati al ' + str(raw_data.index[-1]))
+st.subheader('Dati aggiornati al ' + str(raw_data.index[-1])[:10])
 
 
 
