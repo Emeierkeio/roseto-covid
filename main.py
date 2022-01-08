@@ -41,7 +41,7 @@ ieriancora = threeDaysMeasures.head(1)
 
 
 col1, col2, col3 = st.columns(3)
-col1.metric("Totale Positivi", int(oggi.totale_positivi.values[0]), int(oggi.totale_positivi.values[0] - ieri.totale_positivi.values[0]), delta_color="inverse")
+col1.metric("Attualmente Positivi", int(oggi.totale_positivi.values[0]), int(oggi.totale_positivi.values[0] - ieri.totale_positivi.values[0]), delta_color="inverse")
 col2.metric("Ricoverati", int(oggi.ricoverati.values[0]), int(oggi.ricoverati.values[0] - ieri.ricoverati.values[0]), delta_color="inverse")
 col3.metric("Fine Sorveglianza", int(oggi.fine_sorveglianza.values[0]))
 
