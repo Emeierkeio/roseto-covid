@@ -4,7 +4,7 @@ import pandas as pd
 import plotter
 st.set_page_config(
      page_title="Covid-19 Roseto",
-     page_icon="favicon.ico",
+     page_icon="assets/favicon.ico",
      layout="wide",
      initial_sidebar_state="expanded",
      menu_items={
@@ -65,13 +65,13 @@ with graph:
 
     st.subheader('Attualmente Positivi')
     st.caption('Indicato, giornalmente, il numero totale di positivi.')
-    st.plotly_chart(plotter.plot_daily_cases(raw_data.tail(days), 'attualmente_positivi'), use_container_width=True)
+    st.plotly_chart(plotter.plotlyAreaChart(raw_data.tail(days), 'attualmente_positivi'), use_container_width=True)
 
     st.subheader('Nuovi positivi giornalieri')
     st.caption('Indicato, giornalmente, il numero di nuovi positivi.')
-    st.plotly_chart(plotter.plot_daily_cases(raw_data.tail(days), 'nuovi_positivi'), use_container_width=True)
+    st.plotly_chart(plotter.plotlyAreaChart(raw_data.tail(days), 'nuovi_positivi'), use_container_width=True)
 
     st.subheader('Numero di ricoverati')
     st.caption('Indicato, giornalmente, il numero di persone attualmente ricoverate residenti nel comune di Roseto degli Abruzzi.')
-    st.plotly_chart(plotter.plot_daily_cases(raw_data.tail(days), 'ricoverati'), use_container_width=True)
+    st.plotly_chart(plotter.plotlyAreaChart(raw_data.tail(days), 'ricoverati'), use_container_width=True)
 
