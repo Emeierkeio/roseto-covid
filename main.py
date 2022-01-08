@@ -10,7 +10,8 @@ st.set_page_config(
      menu_items={
          'Get Help': 'https://github.com/Emeierkeio/roseto-covid/issues',
          'Report a bug': "https://github.com/Emeierkeio/roseto-covid/issues",
-         'About': '''The Dashboard was built by [Mirko Tritella](https://www.github.com/Emeierkeio). It uses the data published daily on Facebook page [Città di Roseto degli Abruzzi](https://www.facebook.com/cittadiroseto). Licenza: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).''',
+         'About': '''Dashboard realizzata da [Mirko Tritella](https://www.github.com/Emeierkeio) utilizzando i dati pubblicati quotidianamente sulla pagina Facebook [Città di Roseto degli Abruzzi](https://www.facebook.com/cittadiroseto).
+         Licenza dati: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).''',
      }
  )
 
