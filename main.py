@@ -47,13 +47,10 @@ metrics = st.container()
 graph = st.container()
 
 with header:
-    col11, col12 = st.columns(2)
-    with col11:
-        st.title('Roseto degli Abruzzi (TE)')
-        st.write('Dati COVID-19 aggiornati al ' + str(raw_data.data.max())[:10])
-    with col12:
-        with open('roseto.csv') as f:
-            st.download_button('Download data', f)
+    st.title('Roseto degli Abruzzi (TE)')
+    st.markdown('**Dati COVID-19 aggiornati al {}**'.format(str(raw_data.data.max())[:10]))
+    with open('roseto.csv') as f:
+        st.download_button('Download data', f)
 
 with metrics:
     st.markdown('##')
