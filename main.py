@@ -3,6 +3,7 @@ from mimetypes import read_mime_types
 import streamlit as st
 import pandas as pd
 import plotter
+
 st.set_page_config(
      page_title="Covid-19 Roseto",
      page_icon="assets/favicon.ico",
@@ -16,12 +17,19 @@ st.set_page_config(
      }
  )
 
+# Create a new column with the weekly number of new cases
+def addMeans(df):
+    df['nuovi_positivi_weekly'] = df['nuovi_positivi'].rolling(7).mean()
+    df['ricoverati_weekly'] = df['ricoverati'].rolling(7).mean()
+    return df
+
 @st.cache
 def load_data():
     data = pd.read_csv('roseto.csv')
     data.data = pd.to_datetime(data.data, format='%Y-%m-%d')
     # Handle NaN values
     data = data.interpolate(method='bfill', limit_direction='backward', axis=0)
+    addMeans(data)
     return data
 
 
@@ -78,13 +86,13 @@ with graph:
     #    st.markdown('##')
     st.subheader('Attualmente Positivi')
     st.caption('Ciascun giorno mostra il numero totale di positivi.')
-    st.plotly_chart(plotter.plotlyAreaChart(raw_data.tail(days), 'attualmente_positivi'), use_container_width=True)
+    st.plotly_chart(plotter.plotlyAreaChart(raw_data.tail(days)), use_container_width=True)
     st.markdown('##')
     st.subheader('Nuovi positivi giornalieri')
-    st.caption('Ciascun giorno mostra i nuovi casi segnalati dal giorno precedente.')
-    st.plotly_chart(plotter.plotlyAreaChart(raw_data.tail(days), 'nuovi_positivi'), use_container_width=True)
+    st.caption('Ciascun giorno mostra i nuovi casi segnalati dal giorno precedente e la relativa media rispetto alla settimana precedente.')
+    st.plotly_chart(plotter.plotlyAreaChartwithMean(raw_data.tail(days), 'nuovi_positivi'), use_container_width=True)
     st.markdown('##')
     st.subheader('Numero di ricoverati')
-    st.caption('Ciascun giorno mostra il numero di persone ricoverate residenti nel comune di Roseto degli Abruzzi.')
-    st.plotly_chart(plotter.plotlyAreaChart(raw_data.tail(days), 'ricoverati'), use_container_width=True)
+    st.caption('Ciascun giorno mostra il numero di persone ricoverate residenti nel comune di Roseto degli Abruzzi e la relativa media rispetto alla settimana precedente.')
+    st.plotly_chart(plotter.plotlyAreaChartwithMean(raw_data.tail(days), 'ricoverati'), use_container_width=True)
 
