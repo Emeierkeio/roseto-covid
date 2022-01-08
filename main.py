@@ -54,24 +54,24 @@ with metrics:
         st.dataframe(raw_data)
         
     with open('roseto.csv') as f:
-        col_2.download_button('Scarica dati in CSV', f)
+        col_2.download_button('Scarica dati', f)
         
 
 
 
 
 with graph:
-    days = st.slider('Scegli il numero di giorni di cui vuoi visualizzare i dati', 0, len(raw_data.index), 120)
+    days = st.slider('Seleziona la quantità di giorni di cui vuoi visualizzare i dati', 0, len(raw_data.index), 120)
 
     st.subheader('Attualmente Positivi')
-    st.caption('Indicato, giornalmente, il numero totale di positivi.')
+    st.caption('Ciascun giorno mostra il numero totale di positivi in quel giorno.')
     st.plotly_chart(plotter.plotlyAreaChart(raw_data.tail(days), 'attualmente_positivi'), use_container_width=True)
 
     st.subheader('Nuovi positivi giornalieri')
-    st.caption('Indicato, giornalmente, il numero di nuovi positivi.')
+    st.caption('Ciascun giorno mostra i nuovi casi segnalati dal giorno precedente.')
     st.plotly_chart(plotter.plotlyAreaChart(raw_data.tail(days), 'nuovi_positivi'), use_container_width=True)
 
     st.subheader('Numero di ricoverati')
-    st.caption('Indicato, giornalmente, il numero di persone attualmente ricoverate residenti nel comune di Roseto degli Abruzzi.')
+    st.caption('Ciascun giorno mostra il numero di persone ricoverate in quel giorno residenti nel comune di Roseto degli Abruzzi.')
     st.plotly_chart(plotter.plotlyAreaChart(raw_data.tail(days), 'ricoverati'), use_container_width=True)
 
