@@ -23,7 +23,7 @@ def addMeans(df):
     df['ricoverati_weekly'] = df['ricoverati'].rolling(7).mean()
     return df
 
-@st.cache
+@st.cache(ttl=60*60*10)
 def load_data():
     data = pd.read_csv('roseto.csv')
     data.data = pd.to_datetime(data.data, format='%Y-%m-%d')
