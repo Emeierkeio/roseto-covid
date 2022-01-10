@@ -66,7 +66,7 @@ with metrics:
     st.markdown('##')
     col1, col2, col3 = st.columns(3)
     col1.metric("Attualmente Positivi", int(oggi.attualmente_positivi.values[0]), positiviDaAggiungere, delta_color="inverse")
-    col2.metric("Ricoverati", int(oggi.ricoverati.values[0]), , delta_color="inverse")
+    col2.metric("Ricoverati", int(oggi.ricoverati.values[0]), ricoveratiDaAggiungere, delta_color="inverse")
     col3.metric("Fine Sorveglianza", int(oggi.fine_sorveglianza.values[0]))
 
 
