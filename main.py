@@ -53,11 +53,11 @@ with header:
         st.download_button('Download data', f)
 
 # Gestisce i casi in cui il giorno prima non ho avuto i dati
-positiviDaAggiungere = int(oggi.attualmente_positivi.values[0] - ieri.attualmente_positivi.values[0])
+positiviDaAggiungere = oggi.attualmente_positivi.values[0] - ieri.attualmente_positivi.values[0]
 if positiviDaAggiungere == 0:
     positiviDaAggiungere = oggi.nuovi_positivi.values[0]
 
-ricoveratiDaAggiungere = int(oggi.ricoverati.values[0] - ieri.ricoverati.values[0])
+ricoveratiDaAggiungere = oggi.ricoverati.values[0] - ieri.ricoverati.values[0]
 if ricoveratiDaAggiungere == 0:
     ricoveratiDaAggiungere = oggi.ricoverati.values[0] - ieriancora.ricoverati.values[0]
 
@@ -65,8 +65,8 @@ with metrics:
     st.markdown('##')
     st.markdown('##')
     col1, col2, col3 = st.columns(3)
-    col1.metric("Attualmente Positivi", int(oggi.attualmente_positivi.values[0]), positiviDaAggiungere, delta_color="inverse")
-    col2.metric("Ricoverati", int(oggi.ricoverati.values[0]), ricoveratiDaAggiungere, delta_color="inverse")
+    col1.metric("Attualmente Positivi", int(oggi.attualmente_positivi.values[0]), int(positiviDaAggiungere), delta_color="inverse")
+    col2.metric("Ricoverati", int(oggi.ricoverati.values[0]), int(ricoveratiDaAggiungere), delta_color="inverse")
     col3.metric("Fine Sorveglianza", int(oggi.fine_sorveglianza.values[0]))
 
 
