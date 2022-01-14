@@ -78,18 +78,17 @@ with graph:
     # Create a date picker in streamlit
     st.markdown('##')
     st.markdown('##')
-    #day = st.date_input('Selezione la data da cui far partire le visualizzazioni:', datetime(2021, 9, 11))
-    #st.write('Verranno mostrati i dati dal', day, 'a oggi')
-    #yesterday = datetime.today() - timedelta(days=1)
-    #yesterday = yesterday.date()
-    days = 90
-    #days = (yesterday - day).days + 1
-    #if days < 2:
-    #    st.error('Puoi selezionare solamente date antecedenti ad oggi')
-    #elif(days > len(raw_data)):
-    #    st.error('Non ci sono dati per la data selezionata')
-    #else:
-    #    st.markdown('##')
+    day = st.date_input('Selezione la data da cui far partire le visualizzazioni:', datetime(2021, 9, 11))
+    st.write('Verranno mostrati i dati dal', day, 'a oggi')
+    yesterday = datetime.today() - timedelta(days=1)
+    yesterday = yesterday.date()
+    days = (yesterday - day).days + 1
+    if days < 2:
+        st.error('Puoi selezionare solamente date antecedenti ad oggi')
+    elif(days > len(raw_data)):
+        st.error('Non ci sono dati per la data selezionata')
+    else:
+        st.markdown('##')
     st.subheader('Attualmente Positivi')
     st.caption('Ciascun giorno mostra il numero totale di positivi.')
     st.plotly_chart(plotter.plotlyAreaChart(raw_data.tail(days)), use_container_width=True)
