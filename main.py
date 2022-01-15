@@ -77,7 +77,7 @@ with graph:
     # Create a date picker in streamlit
     st.markdown('##')
     st.markdown('##')
-    day = st.date_input('Selezione la data da cui far partire le visualizzazioni:', datetime(2021, 9, 11))
+    day = st.date_input('Selezione la data da cui far partire le visualizzazioni:', datetime(2021, 11, 16))
     st.write('Verranno mostrati i dati dal', day, 'a oggi')
     yesterday = datetime.today() - timedelta(days=1)
     yesterday = yesterday.date()
