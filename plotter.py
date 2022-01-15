@@ -8,7 +8,7 @@ def plotlyAreaChart(df):
         xaxis_title="Data",
         yaxis_title= 'Attualmente positivi',
         dragmode=False,
-        yaxis_range=[0, df.attualmente_positivi.max() + df.attualmente_positivi.max()/10],
+        yaxis_range=[0, df.attualmente_positivi.max() + df.attualmente_positivi.max()/6],
         legend=dict(
                 orientation="h",
                 yanchor="top",
@@ -91,7 +91,7 @@ def plotlyAreaChartwithMean(df, measure):
     )
 
     fig.update_layout(
-        yaxis_range=[0, df[measure].max() + df[measure].max()/10],
+        yaxis_range=[0, df[measure].max() + df[measure].max()/6],
         xaxis_title="Data",
         yaxis_title= measure.capitalize().replace('_', ' '),
         dragmode=False,
