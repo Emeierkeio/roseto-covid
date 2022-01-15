@@ -1,5 +1,4 @@
 from datetime import datetime, timedelta
-from mimetypes import read_mime_types
 import streamlit as st
 import pandas as pd
 import plotter
