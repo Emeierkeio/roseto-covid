@@ -24,7 +24,7 @@ def addMeans(df):
 
 @st.cache(ttl=60*60*10)
 def load_data():
-    data = pd.read_csv('roseto.csv')
+    data = pd.read_csv('data/roseto.csv')
     data.data = pd.to_datetime(data.data, format='%Y-%m-%d')
     # Handle NaN values
     data = data.interpolate(method='bfill', limit_direction='backward', axis=0)
@@ -48,7 +48,7 @@ graph = st.container()
 with header:
     st.title('Roseto degli Abruzzi (TE)')
     st.markdown('**Dati COVID-19 aggiornati al {}**'.format(str(raw_data.data.max())[:10]))
-    with open('roseto.csv') as f:
+    with open('data/roseto.csv') as f:
         st.download_button('Download data', f)
 
 # Gestisce i casi in cui il giorno prima non ho avuto i dati
