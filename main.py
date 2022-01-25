@@ -60,14 +60,18 @@ ricoveratiDaAggiungere = oggi.ricoverati.values[0] - ieri.ricoverati.values[0]
 if ricoveratiDaAggiungere == 0:
     ricoveratiDaAggiungere = oggi.ricoverati.values[0] - ieriancora.ricoverati.values[0]
 
+fine_sorveglianza = oggi.nuovi_positivi.values[0] - (oggi.attualmente_positivi.values[0] - ieri.attualmente_positivi.values[0])
+
 with metrics:
     st.markdown('##')
     st.markdown('##')
     col1, col2, col3 = st.columns(3)
     col1.metric("Attualmente Positivi", int(oggi.attualmente_positivi.values[0]), int(positiviDaAggiungere), delta_color="inverse")
     col2.metric("Ricoverati", int(oggi.ricoverati.values[0]), int(ricoveratiDaAggiungere), delta_color="inverse")
-    col3.metric("Fine Sorveglianza", int(oggi.fine_sorveglianza.values[0]))
-
+    with col3:
+        st.metric("Fine Sorveglianza calcolati", int(fine_sorveglianza))
+        st.caption('**Note:** Il dato relativo alla fine delle sorveglianze è calcolato come: ')
+        st.latex(r'''positivi_{ieri} + nuoviPositivi_{oggi} - positivi_{oggi}''')
 
 
 
