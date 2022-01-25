@@ -1245,5 +1245,12 @@
    "ricoverati": 9,
    "nuovi_positivi": 64,
    "fine_sorveglianza": 0
+ },
+ {
+   "data": "2022-01-24",
+   "attualmente_positivi": 1560,
+   "ricoverati": 7,
+   "nuovi_positivi": 84,
+   "fine_sorveglianza": 1
  }
 ]
