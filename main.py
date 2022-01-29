@@ -62,7 +62,8 @@ if ricoveratiDaAggiungere == 0:
 
 if ieri.attualmente_positivi.values[0] == "":
     fine_sorveglianza = oggi.fine_sorveglianza.values[0]
-fine_sorveglianza = oggi.nuovi_positivi.values[0] - (oggi.attualmente_positivi.values[0] - ieri.attualmente_positivi.values[0])
+else:
+    fine_sorveglianza = oggi.nuovi_positivi.values[0] - (oggi.attualmente_positivi.values[0] - ieri.attualmente_positivi.values[0])
 
 with metrics:
     st.markdown('##')
