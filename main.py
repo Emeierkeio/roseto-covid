@@ -60,10 +60,10 @@ ricoveratiDaAggiungere = oggi.ricoverati.values[0] - ieri.ricoverati.values[0]
 if ricoveratiDaAggiungere == 0:
     ricoveratiDaAggiungere = oggi.ricoverati.values[0] - ieriancora.ricoverati.values[0]
 
-if ieri.fine_sorveglianza.values[0]:
+if ieri.fine_sorveglianza_ufficiali.values[0]:
     fine_sorveglianza = oggi.nuovi_positivi.values[0] - (oggi.attualmente_positivi.values[0] - ieri.attualmente_positivi.values[0])
 else:
-    fine_sorveglianza = oggi.fine_sorveglianza.values[0]
+    fine_sorveglianza = oggi.fine_sorveglianza_ufficiali.values[0]
 
 
 with metrics:
