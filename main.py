@@ -65,7 +65,8 @@ if ieri.attualmente_positivi.values[0]:
 else:
     fine_sorveglianza = oggi.fine_sorveglianza_ufficiali.values[0]
 
-print(fine_sorveglianza)
+if fine_sorveglianza < 0:
+    fine_sorveglianza = 0
 with metrics:
     st.markdown('##')
     st.markdown('##')
