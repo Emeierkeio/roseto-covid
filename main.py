@@ -88,14 +88,14 @@ with graph:
     yesterday = datetime.today() - timedelta(days=1)
     yesterday = yesterday.date()
     days = (yesterday - day).days + 1
-    print(days)
+
     if days < 2:
         st.error('Puoi selezionare solamente date antecedenti ad oggi')
     elif(days > len(raw_data)):
         st.error('Non ci sono dati per la data selezionata')
     else:
         st.markdown('##')
-    print("x:", raw_data.tail(days))
+
     st.subheader('Attualmente Positivi')
     st.caption('Ciascun giorno mostra il numero totale di positivi.')
     st.plotly_chart(plotter.plotlyAreaChart(raw_data.tail(days)), use_container_width=True)
