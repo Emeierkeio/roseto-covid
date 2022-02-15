@@ -88,6 +88,7 @@ with graph:
     yesterday = datetime.today() - timedelta(days=1)
     yesterday = yesterday.date()
     days = (yesterday - day).days + 1
+    print(days)
     if days < 2:
         st.error('Puoi selezionare solamente date antecedenti ad oggi')
     elif(days > len(raw_data)):
