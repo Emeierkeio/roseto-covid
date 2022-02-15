@@ -95,6 +95,7 @@ with graph:
         st.error('Non ci sono dati per la data selezionata')
     else:
         st.markdown('##')
+    print("x:", raw_data.tail(days))
     st.subheader('Attualmente Positivi')
     st.caption('Ciascun giorno mostra il numero totale di positivi.')
     st.plotly_chart(plotter.plotlyAreaChart(raw_data.tail(days)), use_container_width=True)
